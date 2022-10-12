@@ -73,6 +73,21 @@ public class BookManagerControllerTests
     }
 
     [Test]
+    public void Delete_BookByBookId_Correct_Book()
+    {
+        //Arrange
+        long existingBookId = 2;
+
+        _mockBookManagementService.Setup(b => b.Delete(existingBookId));
+
+        //Act
+        var result = _controller.DeleteBook(existingBookId);
+
+        //Assert
+        result.Value.Should().Be(false);
+    }
+
+    [Test]
     public void AddBook_Creates_A_Book()
     {
         //Arrange
